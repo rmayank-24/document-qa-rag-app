@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query PDF</title>
+</head>
+<body>
+    <h1>Ask a Question about the PDF</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="session_id" value="{{ session_id }}">
+        <input type="hidden" name="pdf_id" value="{{ pdf_id }}">
+        <label for="question">Your Question:</label><br>
+        <input type="text" name="question" required><br><br>
+        <input type="submit" value="Ask">
+    </form>
+
+    {% if answer %}
+        <h2>Answer:</h2>
+        <p>{{ answer }}</p>
+    {% endif %}
+
+    {% if chat_history %}
+        <h2>Chat History:</h2>
+        <ul>
+            {% for msg in chat_history %}
+                <li><strong>{{ msg.type|title }}:</strong> {{ msg.content }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

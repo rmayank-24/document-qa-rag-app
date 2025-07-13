@@ -1,0 +1,15 @@
+django>=4.2
+djangorestframework
+python-dotenv
+langchain
+langchain-community
+langchain-core
+langchain-chroma
+langchain-groq
+langchain-huggingface
+faiss-cpu
+PyMuPDF
+requests
+sentence-transformers
+django-cors-headers
+pypdf

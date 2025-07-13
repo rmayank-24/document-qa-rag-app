@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload PDF</title>
+</head>
+<body>
+    <h2>Upload a PDF</h2>
+    <form action="/upload-html/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="session_id">Session ID:</label><br>
+        <input type="text" name="session_id" value="test_session"><br><br>
+
+        <label for="file">Select PDF:</label><br>
+        <input type="file" name="file" required><br><br>
+
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if pdf_id %}
+        <h3>Upload Successful!</h3>
+        <p>Your PDF ID: <strong>{{ pdf_id }}</strong></p>
+        <p>Use this ID to ask questions at <a href="/query-html/">Query Page</a></p>
+    {% endif %}
+</body>
+</html>
