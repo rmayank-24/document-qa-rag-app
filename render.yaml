@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: dip-backend
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn document_qa_backend.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: document_qa_backend.settings
+      - key: PYTHON_VERSION
+        value: 3.10.0
+    autoDeploy: true
