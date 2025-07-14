@@ -13,6 +13,9 @@ from document_qa_backend.services.rag_chain import get_semantic_answer
 
 
 
+def health_check(request):
+    return JsonResponse({"status": "ok"})
+
 class UploadPDFView(APIView):
     def post(self, request):
         file = request.FILES.get('file')
